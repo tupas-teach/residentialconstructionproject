@@ -30,12 +30,12 @@ public class Login extends javax.swing.JFrame {
     public static boolean loginAcc(String username, String password,String confirmpassword,String email){
         dbConnector connector = new dbConnector();
       try{
-            String query = "SELECTED *FROM tbl_user WHEER username = " +username + "AND U_password= "+ password +"AND U_confirmpassw = "+confirmpassword+""
-                    + "AND U_email ="+ email+"";
+            String query = "SELECTED *FROM tbl_rigester WHEER un = " +username + "AND pass = "+ password +"AND cpass = "+confirmpassword+""
+                    + "AND email ="+ email+"";
             ResultSet resultSet = connector.getData(query);
             if(resultSet.next()){
                 status =resultSet.getString("status");
-                status =resultSet.getString("type");
+                type =resultSet.getString("type");
                 Session sess = Session.getInstance();
                 sess.setUId(resultSet.getInt("Uid"));
                  sess.setFname(resultSet.getString("fname"));
@@ -198,7 +198,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +219,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(em, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(showpass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

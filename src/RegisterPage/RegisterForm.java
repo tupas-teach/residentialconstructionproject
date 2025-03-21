@@ -48,8 +48,8 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         em = new javax.swing.JTextField();
-        status = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        gen = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,27 +150,27 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(51, 255, 51));
         jLabel10.setText("Email:");
 
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pending", "active ", "aproved" }));
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel8.setText("   Status:");
+        jLabel8.setText("Gender");
+
+        gen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "male", "female" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(119, 119, 119)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Clear)
-                                .addGap(61, 61, 61)
-                                .addComponent(Register)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Clear)
+                        .addGap(61, 61, 61)
+                        .addComponent(Register)))
+                .addContainerGap(223, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jLabel10)
@@ -192,15 +192,15 @@ public class RegisterForm extends javax.swing.JFrame {
                                 .addGap(21, 21, 21))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ln, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                             .addComponent(un, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                             .addComponent(pas)
                             .addComponent(cpas)
                             .addComponent(type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(gen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(202, 202, 202))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
@@ -240,13 +240,13 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gen, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addGap(74, 74, 74)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(em, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,9 +277,9 @@ public class RegisterForm extends javax.swing.JFrame {
     }
       dbConnector dbc = new dbConnector();
     
-        dbc.insertData("INSERT INTO register_tbl(r_fname,r_lname,r_username,r_pass,r_confirmpass,r_type,r_status,r_email)"+
-                "VALUES("+fn.getText()+","+ln.getText()+","+un.getText()+","+pas.getText()+","+cpas.getText()+","+type.getSelectedItem()+","+em.getText()+","+
-                ", 'Pending')");
+        dbc.insertData("INSERT INTO tbl_rigester(fn,ln,un,pass,cpass,type,gender,status,email)"+
+                "VALUES('"+fn.getText()+"','"+ln.getText()+"','"+un.getText()+"','"+pas.getText()+"','"+cpas.getText()+"','"+type.getSelectedItem()+"','"+gen.getSelectedItem()+"','"+em.getText()+"','"+"'"+
+                "', 'Pending')");
                         
          {
              JOptionPane.showMessageDialog(null, "Register Successfully");
@@ -353,6 +353,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField cpas;
     private javax.swing.JTextField em;
     private javax.swing.JTextField fn;
+    private javax.swing.JComboBox<String> gen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -368,7 +369,6 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JTextField ln;
     private javax.swing.JPasswordField pas;
     private javax.swing.JRadioButton show;
-    private javax.swing.JComboBox<String> status;
     private javax.swing.JComboBox<String> type;
     private javax.swing.JTextField un;
     // End of variables declaration//GEN-END:variables
